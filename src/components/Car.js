@@ -4,6 +4,7 @@ import { gsap } from "gsap/dist/gsap";
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'; 
+import {ExtrudeGeometry, Shape} from "three";
 
 class Car extends Component {
 
@@ -21,15 +22,14 @@ class Car extends Component {
             color: 0xff0000,
         }
         
-    
-        
-        //axis helper
-        // const axesHelper = new THREE.AxesHelper(3);
-        // scene.add(axesHelper);
-        
 
         //scene
         this.scene = new THREE.Scene();
+
+            
+        //axis helper
+        // const axesHelper = new THREE.AxesHelper(3);
+        // this.scene.add(axesHelper);
 
         /**
          * Objects
@@ -210,7 +210,7 @@ class Car extends Component {
         
         //carlights
         
-        const flHeadLight = new THREE.SpotLight(0x78ff00, 6, 6, Math.PI * 0.1, 1, 2);
+        const flHeadLight = new THREE.SpotLight("#ffffff", 6, 6, Math.PI * 0.1, 1, 2);
         flHeadLight.position.set(0.12, 0, 0.5);
         flHeadLight.target.position.x = 0.15 
         flHeadLight.target.position.y = -0.07
@@ -218,7 +218,7 @@ class Car extends Component {
         car.add(flHeadLight);
         car.add(flHeadLight.target);
         
-        const frHeadLight = new THREE.SpotLight(0x78ff00, 6, 6, Math.PI * 0.1, 1, 2);
+        const frHeadLight = new THREE.SpotLight("#ffffff", 6, 6, Math.PI * 0.1, 1, 2);
         frHeadLight.position.set(-0.1, 0, 0.5);
         frHeadLight.target.position.x = -0.1 
         frHeadLight.target.position.y = -0.07
@@ -308,66 +308,57 @@ class Car extends Component {
         
         
         //Buildings
-        
-        const cubeMaterial = new THREE.MeshStandardMaterial();
-        cubeMaterial.color.set("#1c1c1c");
-        
+
+
+        //new prism
+
+        class PrismGeometry extends ExtrudeGeometry {
+            constructor(vertices, height) {
+              super(new Shape(vertices), {depth: height, bevelEnabled: false});
+            }
+        }
+
+        class HouseMesh extends THREE.Group {
+            constructor(width, height, depth, color) {
+                super();
+                this.houseBody = new THREE.Mesh(
+                    new THREE.BoxGeometry(width, height, depth),
+                    new THREE.MeshStandardMaterial({ color: color })
+                );
+                this.roof = new THREE.Mesh( 
+                    new PrismGeometry( [ new THREE.Vector2( width * -.2, 0 ), new THREE.Vector2( width * 0.5, height * 0.5 ), new THREE.Vector2( width * 1.2, 0 ) ], depth + .2 ),
+                    new THREE.MeshStandardMaterial({ color: "grey" })
+                );
+                this.houseBody.position.set(0,0, 0.1);
+                this.roof.position.set(-width / 2, height / 2, -depth / 2)
+                this.add(this.houseBody);
+                this.add(this.roof);
+            }
+        }
+
         // gui.addColor(parameters, 'color').onChange(() => {
         //     cubeMaterial.color.set(parameters.color)
         //     }).name("cube color")
         
         
-        const house1 =  new THREE.Group();
-        const house1Walls = new THREE.Mesh(
-            new THREE.BoxGeometry(1.3, 1.3, 2),
-            new THREE.MeshStandardMaterial({ color: "pink" })
-        )
-        
-        const house1Roof = new THREE.Mesh(
-            new THREE.CylinderGeometry(1, 1, 2, 3),
-            new THREE.MeshStandardMaterial({ color: "#383837" })
-        )
-        house1Roof.rotation.x = - Math.PI / 2;
-        house1Roof.position.set(0, 1.15, 0);
-        
-        const house1Door = new THREE.Mesh(
-            new THREE.PlaneGeometry(0.5, 0.25),
-            new THREE.MeshStandardMaterial({ color: "#f5b67f" })
-        )
-        house1Door.rotation.x = - Math.PI / 2;
-        house1Door.rotation.y = Math.PI / 2;
-        house1Door.position.set(0.652, -0.25, 0);
-        
-        
-        house1.add(house1Roof);
-        house1.add(house1Walls);
-        house1.add(house1Door);
-        
+        const house1 =  new HouseMesh(1.3, 1.3, 2, "pink");
         house1.position.set(-6, -0.5, 1);
         house1.rotation.y = -0.8;
         this.scene.add(house1);
         
-        
-        const house2Material = new THREE.MeshStandardMaterial();
-        house2Material.color.set("#000e75");
-        
-        const house2 = new THREE.Mesh(
-            new THREE.BoxGeometry(4, 1.5, 3),
-            house2Material
-        )
-        house2.position.set(-1, -0.25 , 30)
+        const house2 = new HouseMesh(1, 1, 4, "#000e75")
+        house2.position.set(-2, -0.5 , 30)
+        house2.rotation.y = Math.PI / 2;
         this.scene.add(house2);
         
-        
-        const house3Material = new THREE.MeshStandardMaterial();
-        house3Material.color.set("#780101");
-        
-        const house3 = new THREE.Mesh(
-            new THREE.BoxGeometry(4, 1.5, 3),
-            house3Material
-        )
-        house3.position.set(7 , -0.25 , 0.5)
+        const house3 = new HouseMesh(4, 1.5, 3, "#780101")
+        house3.position.set(10 , -0.25 , 0.5)
         this.scene.add(house3);
+
+        const house4 = new HouseMesh(1.5, 1, 2, "blue");
+        house4.position.set(-10, -0.5, 3)
+        house4.rotation.y = -0.8;
+        this.scene.add(house4);
         
         
         
@@ -376,12 +367,12 @@ class Car extends Component {
         const diamondMaterial = new THREE.MeshNormalMaterial();
         const diamonds = new THREE.Group();
         
-        for(let i = 0; i < 1500; i++){
+        for(let i = 0; i < 2000; i++){
             const diamond = new THREE.Mesh(diamondGeometry, diamondMaterial);
         
-            diamond.position.x = (Math.random() - 0.5) * 80;
+            diamond.position.x = (Math.random() - 0.5) * 200;
             diamond.position.y = (Math.random() + 2) * 5;
-            diamond.position.z = (Math.random() - 0.5) * 80;
+            diamond.position.z = (Math.random() - 0.5) * 200;
         
             diamond.rotation.x = Math.random() * Math.PI
             diamond.rotation.y = Math.random() * Math.PI
@@ -454,15 +445,15 @@ class Car extends Component {
         let speed = 0.0;
         let stop = 1;
         let DEGTORAD = 0.01745327;
-        let temp = new THREE.Vector3;
-        let dir = new THREE.Vector3;
-        let a = new THREE.Vector3;
-        let b = new THREE.Vector3;
+        let temp = new THREE.Vector3();
+        let dir = new THREE.Vector3();
+        let a = new THREE.Vector3();
+        let b = new THREE.Vector3();
         let velocity = 0.0;
         const coronaSafetyDistance = 1.5;
         
-        const goal = new THREE.Object3D;
-        const follow = new THREE.Object3D;
+        const goal = new THREE.Object3D();
+        const follow = new THREE.Object3D();
         follow.position.z = -coronaSafetyDistance;
         car.add( follow );
         goal.add( camera );
@@ -496,62 +487,65 @@ class Car extends Component {
         
         const tick = () =>
         {
-            requestAnimationFrame( tick );
-            
-          speed = 0.0;
+            if(this.renderer) {
+                requestAnimationFrame( tick );
+
+                speed = 0.0;
           
-          if ( keys.ArrowUp )
-            speed = 0.05;
-          else if ( keys.ArrowDown )
-            speed = -0.05;
-        
-          velocity += ( speed - velocity ) * .3;
-          car.translateZ( velocity );
-        
-          if ( keys.ArrowLeft )
-            car.rotateY(0.03);
-          else if ( keys.ArrowRight )
-            car.rotateY(-0.03);
+                if ( keys.ArrowUp )
+                    speed = 0.05;
+                else if ( keys.ArrowDown )
+                    speed = -0.05;
                 
-          
-          a.lerp(car.position, 0.4);
-          b.copy(goal.position);
-          
-            dir.copy( a ).sub( b ).normalize();
-            const dis = a.distanceTo( b ) - coronaSafetyDistance;
-            goal.position.addScaledVector( dir, dis );
-            goal.position.lerp(temp, 0.02);
-            temp.setFromMatrixPosition(follow.matrixWorld);
-            
-            camera.lookAt( car.position );
-        
-            for ( let i = 0; i < diamonds.children.length; i ++ ) {
-                diamonds.children[i].rotation.x = diamonds.children[i].rotation.x + 0.01;
-                diamonds.children[i].rotation.y = diamonds.children[i].rotation.y + 0.01; 
+                velocity += ( speed - velocity ) * .3;
+                car.translateZ( velocity );
+                
+                if ( keys.ArrowLeft )
+                    car.rotateY(0.03);
+                else if ( keys.ArrowRight )
+                    car.rotateY(-0.03);
+                        
+                
+                a.lerp(car.position, 0.4);
+                b.copy(goal.position);
+                
+                    dir.copy( a ).sub( b ).normalize();
+                    const dis = a.distanceTo( b ) - coronaSafetyDistance;
+                    goal.position.addScaledVector( dir, dis );
+                    goal.position.lerp(temp, 0.02);
+                    temp.setFromMatrixPosition(follow.matrixWorld);
+                    
+                    camera.lookAt( car.position );
+                
+                    for ( let i = 0; i < diamonds.children.length; i ++ ) {
+                        diamonds.children[i].rotation.x = diamonds.children[i].rotation.x + 0.01;
+                        diamonds.children[i].rotation.y = diamonds.children[i].rotation.y + 0.01; 
+                    }
+                    
+                    
+                    controls.update()
+                
+                    this.renderer.render( this.scene, camera );
+
             }
             
-            
-            controls.update()
-        
-            this.renderer.render( this.scene, camera );
+          
         }
         
         tick()
         
-        
-
-
     }
 
 
     componentWillUnmount() {
         console.log('dispose renderer!')
-        this.renderer.dispose()
+        this.renderer.forceContextLoss();
+        this.renderer.domElement = null;
+        this.renderer = null;
         
         this.scene.traverse(object => {
             if (!object.isMesh) return
             
-            console.log('dispose geometry!')
             object.geometry.dispose()
         
             if (object.material.isMaterial) {
@@ -563,7 +557,6 @@ class Car extends Component {
         })
         
         function cleanMaterial(material) {
-            console.log('dispose material!')
             material.dispose()
         
             // dispose textures
@@ -580,8 +573,9 @@ class Car extends Component {
 
     render() {
       return (
-          <div className="flex justify-center items-center bg-slate-700">
-              <div ref={ref => (this.mount = ref)}  id="three" className=" ring ring-width-3 hover:ring-blue-500"/>
+          <div className="pl-60 mt-3 h-screen flex flex-col items-center items-center bg-slate-700">
+              <h1 className="text-slate-600 text-xl font-bold mb-1">Drive around using arrow keys! Hover over display and scroll with two fingers to zoom in/out.</h1>
+              <div ref={ref => (this.mount = ref)}  id="three" className="ml-3 ring ring-width-3 hover:ring-blue-500"/>
           </div>
         
       )

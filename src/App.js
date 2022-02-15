@@ -9,7 +9,7 @@ import ProjectContainer from './components/ProjectContainer';
 
 function App() {
   return (
-    <div className="flex flex-row space-x-3 bg-slate-700">
+    <div className="flex bg-slate-700 h-full">
       <NavBar />
       <Routes>
         <Route 
