@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { gsap } from "gsap/dist/gsap";
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import GUI from 'lil-gui'; 
+//import GUI from 'lil-gui'; 
 import {ExtrudeGeometry, Shape} from "three";
 
 class Car extends Component {
@@ -18,9 +18,9 @@ class Car extends Component {
 
         //const gui = new GUI({ close: true, width: 400 });
 
-        const parameters = {
-            color: 0xff0000,
-        }
+        // const parameters = {
+        //     color: 0xff0000,
+        // }
         
 
         //scene
@@ -39,7 +39,7 @@ class Car extends Component {
         planeMaterial.roughness = .9;
         
         planeMaterial.color = new THREE.Color("#016304");
-        const planeGeometry = new THREE.PlaneGeometry(100,100,100);
+        const planeGeometry = new THREE.PlaneGeometry(300,300,10);
         const plane = new THREE.Mesh(planeGeometry, planeMaterial);
         plane.position.y = -1;
         plane.rotation.x = - Math.PI / 2;
@@ -86,7 +86,7 @@ class Car extends Component {
         //car object
         const car = new THREE.Group();
         
-        const carMaterial = new THREE.MeshStandardMaterial({ color: "cccccc" })
+        const carMaterial = new THREE.MeshStandardMaterial({ color: "#cdd0d4" })
         carMaterial.roughness = 0.2;
         
         const mainBody = new THREE.Mesh(
@@ -177,6 +177,10 @@ class Car extends Component {
         // gui.add(hood.position, "y").min(-0.01).max(0.1).step(0.001).name("hood y position")
         // gui.add(hood.position, "z").min(0.5).max(0.7).step(0.001).name("hood z position")
         //gui.add(hood.rotation, "x").min(0).max(0.5).step(0.001).name("hood x rotation")
+
+        //side windows
+
+        
         
         //wheels
         
@@ -187,21 +191,13 @@ class Car extends Component {
         flWheel.position.set(0.206, -0.041, 0.5);
         flWheel.rotation.z = Math.PI / 2;
         
-        
-        // gui.add(flWheel.position, "x").min(0).max(0.25).step(0.001).name("flwheel x position")
-        // gui.add(flWheel.position, "y").min(-0.15).max(0).step(0.001).name("flwheel y position")
-        // gui.add(flWheel.position, "z").min(0.35).max(0.5).step(0.001).name("flwheel z position")
-        
         const frWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
         frWheel.position.set(-0.206, -0.041, 0.5);
         frWheel.rotation.z = Math.PI / 2;
         
-        
         const brWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
         brWheel.position.set(-0.206, -0.041, -0.158);
         brWheel.rotation.z = Math.PI / 2;
-        
-        //gui.add(brWheel.position, "z").min(-0.28).max(0).step(0.001).name("brwheel z position")
         
         const blWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
         blWheel.position.set(0.206, -0.041, -0.158);
@@ -408,7 +404,7 @@ class Car extends Component {
          * Camera
          */
         const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-        camera.position.set( 0, 0.8, 0 );
+        camera.position.set( 0, 0.6, 0 );
         this.scene.add(camera)
         
         camera.lookAt( this.scene.position );
@@ -430,7 +426,6 @@ class Car extends Component {
          //controls
 
          const canvas = document.querySelector("#three > canvas");
-         console.log(canvas);
          const controls = new OrbitControls(camera, canvas);
          controls.enableDamping = true;
          //controls.enableKeys = false;
@@ -443,8 +438,8 @@ class Car extends Component {
         //controls for steering 
         
         let speed = 0.0;
-        let stop = 1;
-        let DEGTORAD = 0.01745327;
+        //let stop = 1;
+        //let DEGTORAD = 0.01745327;
         let temp = new THREE.Vector3();
         let dir = new THREE.Vector3();
         let a = new THREE.Vector3();
@@ -538,7 +533,6 @@ class Car extends Component {
 
 
     componentWillUnmount() {
-        console.log('dispose renderer!')
         this.renderer.forceContextLoss();
         this.renderer.domElement = null;
         this.renderer = null;
@@ -563,7 +557,6 @@ class Car extends Component {
             for (const key of Object.keys(material)) {
                 const value = material[key]
                 if (value && typeof value === 'object' && 'minFilter' in value) {
-                    console.log('dispose texture!')
                     value.dispose()
                 }
             }

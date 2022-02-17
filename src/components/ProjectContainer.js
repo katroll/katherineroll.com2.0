@@ -20,7 +20,7 @@ function ProjectContainer() {
                     <p className="text-md font-semibold text-gray-200 mb-3">Project created while learning three.js</p>
                     <p className="text-sm text-gray-300">Technoligies:</p>
                     <p className="text-sm text-gray-300 pl-5 mb-3">Three.js</p>
-                    <p className="text-sm text-gray-300 w-3/4">I am interested in three.js and continuing to learn and add to this project which is displayed on the page that this site loads onto. You can use the arrow keys of the keyboard to drive around in the world I am slowly expanding on and updating as I add new features.</p>
+                    <p className="text-sm text-gray-300 w-3/4">I am interested in three.js and continuing to learn and add to this project, which is initially displayed when this site loads. You can use the arrow keys on the keyboard to drive around in the world I am slowly expanding on and updating as I learn new Three.js skills.</p>
                 </div>
             </div>
         </div>

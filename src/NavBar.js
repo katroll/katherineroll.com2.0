@@ -1,5 +1,4 @@
-import { gsap } from "gsap/dist/gsap";
-import {NavLink, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import 'tw-elements';
 
 function NavBar() {
@@ -21,18 +20,18 @@ function NavBar() {
                 <li className="pl-6 mb-4">
                     <a href="https://www.linkedin.com/in/katherine-roll-82b157205/" className="text-slate-200 mb-6">Linkedin</a>
                 </li>
-                <li class="relative" onClick={() =>  navigate("/projects")}>
-                    <a class="flex items-center text-md font-semibold py-4 px-6 h-12 overflow-hidden text-slate-200 text-ellipsis whitespace-nowrap rounded hover:text-slate-200 hover:bg-slate-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="stone">
+                <li className="relative" onClick={() =>  navigate("/projects")}>
+                    <a className="flex items-center text-md font-semibold py-4 px-6 h-12 overflow-hidden text-slate-200 text-ellipsis whitespace-nowrap rounded hover:text-slate-200 hover:bg-slate-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="stone">
                         <span>Projects</span>
                     </a>
                 </li>   
-                <li class="relative" onClick={() => navigate("/")}>
-                    <a class="flex items-center text-md font-semibold py-4 px-6 h-12 overflow-hidden text-slate-200 text-ellipsis whitespace-nowrap rounded hover:text-slate-200 hover:bg-slate-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="stone">
+                <li className="relative" onClick={() => navigate("/")}>
+                    <a className="flex items-center text-md font-semibold py-4 px-6 h-12 overflow-hidden text-slate-200 text-ellipsis whitespace-nowrap rounded hover:text-slate-200 hover:bg-slate-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="stone">
                         <span>Three.js Car Project</span>
                     </a>
                 </li>   
-                {/* <li class="relative" onClick={() => navigate("/about")}>
-                    <a class="flex items-center text-md font-semibold py-4 px-6 h-12 overflow-hidden text-slate-200 text-ellipsis whitespace-nowrap rounded hover:text-slate-200 hover:bg-slate-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="stone">
+                {/* <li className="relative" onClick={() => navigate("/about")}>
+                    <a className="flex items-center text-md font-semibold py-4 px-6 h-12 overflow-hidden text-slate-200 text-ellipsis whitespace-nowrap rounded hover:text-slate-200 hover:bg-slate-700 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="stone">
                         <span>About Me</span>
                     </a>
                 </li>    */}
