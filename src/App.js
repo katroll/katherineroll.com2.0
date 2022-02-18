@@ -13,11 +13,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route 
-          path="/"
+          path="/threeproject"
           element={<Car />}
         />
         <Route 
-          path="/projects"
+          path="/"
           element={<ProjectContainer />}
         />
       </Routes>

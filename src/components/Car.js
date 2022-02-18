@@ -1,6 +1,5 @@
 import "../index.css"
 import React, { Component } from "react";
-import { gsap } from "gsap/dist/gsap";
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 //import GUI from 'lil-gui'; 
@@ -465,11 +464,6 @@ class Car extends Component {
             const key = e.code;
             if ( keys[ key ] !== undefined )
               keys[ key ] = true;
-        
-            if(key === "Space") {
-                gsap.to(car.position, { duration: 1, delay: 0, y: carFront.position.y + 1 })
-                gsap.to(car.position, { duration: 1, delay: 1, y: 0.05 })
-            }
                    
         });
         

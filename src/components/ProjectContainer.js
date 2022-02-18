@@ -4,6 +4,7 @@ function ProjectContainer() {
 
     return (
         <div className="pl-72 h-screen flex flex-col justify-center">
+            <p className="text-2xl text-gray-200 font-bold mb-5 pl-3">My Projects:</p>
            <div className="bg-slate-600 p-10 shadow shadow-slate-900 mb-5">
                 <p className="text-2xl font-bold text-gray-200">My Carbon Footprint</p>
                 <div className="p-3">
@@ -20,7 +21,7 @@ function ProjectContainer() {
                     <p className="text-md font-semibold text-gray-200 mb-3">Project created while learning three.js</p>
                     <p className="text-sm text-gray-300">Technoligies:</p>
                     <p className="text-sm text-gray-300 pl-5 mb-3">Three.js</p>
-                    <p className="text-sm text-gray-300 w-3/4">I am interested in three.js and continuing to learn and add to this project, which is initially displayed when this site loads. You can use the arrow keys on the keyboard to drive around in the world I am slowly expanding on and updating as I learn new Three.js skills.</p>
+                    <p className="text-sm text-gray-300 w-3/4">I am interested in three.js and continuing to learn and add to this project, which is displayed within the "Three.js Car Project" tab in the side navigation bar. You can use the arrow keys on the keyboard to drive around in the world I am slowly expanding on and updating as I learn new Three.js skills.</p>
                 </div>
             </div>
         </div>
