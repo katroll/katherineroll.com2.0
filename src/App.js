@@ -2,15 +2,14 @@ import './index.css';
 
 import { Route, Routes } from "react-router-dom";
 
-import NavBar from './NavBar';
 import Car from './components/Car';
-import ProjectContainer from './components/ProjectContainer';
+import About from './components/About';
 
 
 function App() {
   return (
-    <div className="flex bg-slate-700 h-full">
-      <NavBar />
+    <div className="flex bg-slate-400 h-full">
+      {/* <NavBar /> */}
       <Routes>
         <Route 
           path="/threeproject"
@@ -18,7 +17,7 @@ function App() {
         />
         <Route 
           path="/"
-          element={<ProjectContainer />}
+          element={<About />}
         />
       </Routes>
     </div>

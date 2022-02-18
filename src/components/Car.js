@@ -1,5 +1,6 @@
 import "../index.css"
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 //import GUI from 'lil-gui'; 
@@ -560,9 +561,12 @@ class Car extends Component {
 
     render() {
       return (
-          <div className="pl-60 mt-3 h-screen flex flex-col items-center items-center bg-slate-700">
-              <h1 className="text-slate-600 text-xl font-bold mb-1">Drive around using arrow keys! Hover over display and scroll with two fingers to zoom in/out.</h1>
-              <div ref={ref => (this.mount = ref)}  id="three" className="ml-3 ring ring-width-3 hover:ring-blue-500"/>
+          <div className="mt-5 h-screen w-screen flex flex-col items-center">
+              <div className="flex space-x-10">
+                <NavLink to="/" className="text-slate-800 text-xl font-bold mb-1 cursor-pointer">← Back to Projects</NavLink>
+                <h1 className="text-slate-600 text-xl font-bold mb-1">Drive around using arrow keys! Hover over display and scroll with two fingers to zoom in/out.</h1>
+              </div>
+              <div ref={ref => (this.mount = ref)}  id="three" className="ml-3 ring ring-width-3 ring-slate-500 hover:ring-slate-800"/>
           </div>
         
       )

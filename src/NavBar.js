@@ -19,7 +19,7 @@ function NavBar() {
                 <li className="pl-6 mb-4">
                     <a href="https://www.linkedin.com/in/katherine-roll-82b157205/" className="text-slate-200 mb-6">Linkedin</a>
                 </li>
-                <li className="relative" onClick={() =>  navigate("/")}>
+                <li className="relative" onClick={() =>  navigate("/projects")}>
                     <div className="flex items-center text-md font-semibold py-4 px-6 h-12 text-slate-200 rounded hover:text-slate-200 hover:bg-slate-700">
                         <span>Projects</span>
                     </div>
@@ -29,11 +29,11 @@ function NavBar() {
                         <span>Three.js Car Project</span>
                     </div>
                 </li>   
-                {/* <li className="relative" onClick={() => navigate("/about")}>
+                <li className="relative" onClick={() => navigate("/")}>
                     <div className="flex items-center text-md font-semibold py-4 px-6 h-12 overflow-hidden text-slate-200 rounded hover:text-slate-200 hover:bg-slate-700">
                         <span>About Me</span>
                     </div>
-                </li>    */}
+                </li>   
             </ul>
         </div>
     
