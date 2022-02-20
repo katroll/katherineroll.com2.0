@@ -7,14 +7,14 @@ function About() {
    
 
     return (
-        <div className="ml-10 h-full w-screen flex space-x-10">
-            <div className="flex flex-col w-1/3 items-center fixed pt-10 z-10">
+        <div className="flex flex-col lg:flex-row ml-10 h-full w-screen lg:space-x-10">
+            <div className="flex flex-col lg:w-1/3 items-center lg:fixed lg:pt-20 pt-10 lg:z-10">
                 <img 
                     src={kat} 
                     alt="kat"
-                    className="w-72 rounded-3xl">
+                    className="w-60 lg:w-72 rounded-3xl">
                 </img>
-                <div className="text-4xl text-slate-800 mt-10">
+                <div className="text-7xl lg:text-4xl text-slate-800 mt-10">
                     <Typewriter
                         onInit={(typewriter)=> {
                             typewriter
@@ -26,7 +26,7 @@ function About() {
                         }}
                     />
                 </div>
-                <div className="text-gray-700 mt-10 pl-5">
+                <div className="text-4xl text-justify lg:text-base pr-10 lg:pr-5 text-gray-700 mt-10 pl-5">
                     I am a recent graduate of a full stack software engineering bootcamp at the Flatiron school. Here are some of my projects I have completed there, and in my free time. Outside of continuing to learn new technologies I love to spend my time outside and with animals.
                 </div>
                 <div className="flex space-x-5 mt-5">
