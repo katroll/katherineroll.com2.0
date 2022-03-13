@@ -2,8 +2,17 @@ import kat from "../kat.jpeg"
 import Typewriter from "typewriter-effect";
 import ProjectContainer from "./ProjectContainer";
 
+import { gsap } from "gsap";
+
+import { useRef, useEffect } from "react"
+
 
 function About() {
+    const aboutRef = useRef();
+
+    useEffect(() => {
+        gsap.from(aboutRef.current, 1, { y: 20, opacity: 0, delay: 3 })
+    }, [])
    
 
     return (
@@ -26,7 +35,7 @@ function About() {
                         }}
                     />
                 </div>
-                <div className="text-4xl text-justify lg:text-base pr-10 lg:pr-5 text-gray-700 mt-10 pl-5">
+                <div className="text-4xl text-justify lg:text-base pr-10 lg:pr-5 text-gray-700 mt-10 pl-5" ref={aboutRef}>
                     I am a recent graduate of a full stack software engineering bootcamp at the Flatiron school. Here are some of my projects I have completed there, and in my free time. Outside of continuing to learn new technologies I love to spend my time outside and with animals.
                 </div>
                 <div className="flex space-x-5 mt-5">
