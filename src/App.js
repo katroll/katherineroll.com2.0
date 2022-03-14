@@ -8,8 +8,7 @@ import About from './components/About';
 
 function App() {
   return (
-    <div className="flex bg-slate-400 h-full">
-      {/* <NavBar /> */}
+    <div className="flex bg-slate-400 h-fit">
       <Routes>
         <Route 
           path="/threeproject"

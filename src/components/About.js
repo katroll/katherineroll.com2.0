@@ -11,7 +11,7 @@ function About() {
     const aboutRef = useRef();
 
     useEffect(() => {
-        gsap.from(aboutRef.current, 1, { y: 20, opacity: 0, delay: 3 })
+        gsap.from(aboutRef.current, 1, { y: 20, opacity: 0, delay: 4 })
     }, [])
    
 
