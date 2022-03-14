@@ -16,6 +16,7 @@ function ProjectContainer() {
                                 <p className="text-4xl lg:text-base text-gray-900 lg:w-1/2 text-justify w-full lg:text-left">This website was created for non-profit computer training center located in Kolkata, India. It allows administators to upload quizzes and tests via an Excel file. The center is able to monitor each student's progress and grades and export all tables in the database to excel files for data analysis. Admins are also able to update student login information if needed. Students are able to create accounts and track their own grade history. The demo for this website can be viewed <a href="https://www.loom.com/share/7e5c8fae9b314f90b45697e890fae04c" target="blank" className="font-semibold cursor-pointer text-slate-300">here</a>.</p>
                                 <div className="reletive flex items-center justify-center mt-3 lg:mt-0 lg:w-1/2 lg:pl-3">
                                     <iframe 
+                                        title="Testing Platform"
                                         src="https://www.loom.com/embed/7e5c8fae9b314f90b45697e890fae04c?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" 
                                         frameBorder="0" 
                                         webkitallowfullscreen="true"
