@@ -46,7 +46,7 @@ function ProjectContainer() {
                 <div className="bg-slate-500 lg:w-2/3 p-8 shadow shadow-slate-900 mr-5">
                     <p className="lg:text-2xl text-5xl text-center font-bold text-gray-900">Three.js Car Driving App</p>
                     <div className="lg:p-y-2 pt-3">
-                        <p className="text-3xl lg:text-base text-center font-semibold text-gray-800 mb-4">Project created while learning three.js</p>
+                        <p className="text-3xl lg:text-base text-center font-semibold text-gray-800 mb-4">Project created while learning Three.js</p>
                         <p className="text-4xl lg:text-base text-gray-900 text-justify w-full">I am interested in three.js and continuing to learn and add to this project. The demo is availabe <NavLink to="/threeproject" className="font-semibold cursor-pointer text-slate-300">here</NavLink>, where you can use the arrow keys on the keyboard to drive around in the world I am slowly expanding on and updating as I learn new Three.js skills.</p>
                         <div className="flex flex-col lg:flex-row mt-3 items-center lg:justify-center">
                             <p className="text-4xl lg:text-base font-semibold text-gray-800">Technoligies:</p>
