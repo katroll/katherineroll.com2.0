@@ -8,7 +8,7 @@ import About from './components/About';
 
 function App() {
   return (
-    <div className="flex bg-slate-400 h-fit">
+    <div className="flex bg-gradient-to-br from-slate-200 to-slate-500 h-fit">
       <Routes>
         <Route 
           path="/threeproject"

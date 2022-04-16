@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "../index.js"
+import carbon from "../carbon.png"
 
 
 function ProjectContainer() {
@@ -7,8 +8,8 @@ function ProjectContainer() {
     return (
         <div className="h-full flex flex-col items-center pt-2">
             <div className="flex lg:pl-10 lg:pt-4 mb-5 pb-4 flex-col grid lg:justify-items-end lg:overflow-y-scroll">
-                <p className="text-5xl lg:text-3xl lg:w-2/3 text-center text-gray-800 font-bold mb-5 mt-10 lg:mt-0 lg:ml-72">My Projects</p>
-                <div className="flex flex-col bg-slate-500 lg:w-2/3 p-8 shadow shadow-slate-900 mb-10 lg:mb-5 mr-5">
+                <p className="text-5xl lg:text-3xl lg:w-2/3 text-center tracking-wide text-gray-800 font-bold mb-5 mt-10 lg:mt-0 lg:ml-72">My Projects</p>
+                <div className="flex flex-col bg-slate-400 lg:w-2/3 p-8 shadow shadow-slate-900 mb-10 lg:mb-5 mr-5">
                     <p className="lg:text-2xl text-5xl text-center font-bold text-gray-900">Computer Center Testing Platform</p>
                     <div className="lg:p-y-2 pt-3">
                         <p className="text-3xl lg:text-base text-center font-semibold text-gray-800 mb-4">Capstone project built at The Flatiron School</p>
@@ -32,18 +33,27 @@ function ProjectContainer() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col bg-slate-500 lg:w-2/3 p-8 shadow shadow-slate-900 mb-10 lg:mb-5 mr-5">
+                <div className="flex flex-col bg-slate-400 lg:w-2/3 p-8 shadow shadow-slate-900 mb-10 lg:mb-5 mr-5">
                     <p className="lg:text-2xl text-5xl text-center font-bold text-gray-900">My Carbon Footprint</p>
                     <div className="lg:p-y-2 pt-3">
                         <p className="text-3xl lg:text-base text-center font-semibold text-gray-800 mb-4">Group project completed at The Flatiron School</p>
-                        <p className="text-4xl lg:text-base text-gray-900 text-justify w-full">My Carbon Footprint was created to give you a fun and easy way to get a snapshot of your personal carbon footprint. The app takes a look at some of the most common carbon emitting activities and provides you the ability to fill in your personal details and receive an estimate of carbon emissions based on data provided by the Carbon Interface REST API. </p>
+                        <div className="flex flex-col lg:flex-row lg:space-x-4">
+                            <p className="text-4xl lg:text-base text-gray-900 lg:w-1/2 text-justify w-full">My Carbon Footprint was created to give you a fun and easy way to get a snapshot of your personal carbon footprint. The app takes a look at some of the most common carbon emitting activities and provides you the ability to fill in your personal details and receive an estimate of carbon emissions based on data provided by the Carbon Interface REST API. </p>
+                            <div className="flex items-center w-full justify-center mt-3 lg:mt-0 lg:w-1/2 lg:pl-3">
+                                <img 
+                                    src={carbon} 
+                                    alt="My Carbon Footprint"
+                                    className="w-1/2 h-full lg:w-full rounded">
+                                </img>
+                            </div>
+                        </div>
                         <div className="flex flex-col lg:flex-row mt-3 items-center lg:justify-center">
                             <p className="text-4xl lg:text-base font-semibold text-gray-800">Technoligies:</p>
                             <p className="text-4xl lg:text-base text-gray-800 pl-5">React.js, Ruby on Rails</p>
                         </div>
                     </div>
                 </div>
-                <div className="bg-slate-500 lg:w-2/3 p-8 shadow shadow-slate-900 mr-5">
+                <div className="bg-slate-400 lg:w-2/3 p-8 shadow shadow-slate-900 mr-5">
                     <p className="lg:text-2xl text-5xl text-center font-bold text-gray-900">Three.js Car Driving App</p>
                     <div className="lg:p-y-2 pt-3">
                         <p className="text-3xl lg:text-base text-center font-semibold text-gray-800 mb-4">Project created while learning Three.js</p>
