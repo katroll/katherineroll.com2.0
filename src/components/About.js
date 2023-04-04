@@ -36,7 +36,7 @@ function About() {
                     />
                 </div>
                 <div className="text-4xl text-justify lg:text-base pr-10 lg:pr-5 text-gray-700 mt-10 pl-5" ref={aboutRef}>
-                    I am a recent graduate of a full stack software engineering bootcamp at the Flatiron school. Here are some of my projects I have completed there, and in my free time. Outside of continuing to learn new technologies I love to spend my time outside and with animals.
+                    I am a full stack software engineer working and living in Boulder, Colorado. Here are some of my projects I have completed and am working on. Outside of continuing to learn new technologies I love to spend my time outside hiking and teaching my puppy, Mango, fun tricks.
                 </div>
                 <div className="flex space-x-5 mt-5">
                     <span>
